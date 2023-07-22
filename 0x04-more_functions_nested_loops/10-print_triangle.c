@@ -1,32 +1,33 @@
 #include "main.h"
 
 /**
- * print_triangle - prints a triangle of square according parameter
- * @size: The size of the square traingle
+ * print_triangle - prints a triangle
+ * @size: the size of the square traingle
  */
-
 void print_triangle(int size)
-
 {
-	int x, y, z;
+	int i, j;
 
-	if (size <= 0)
+	if (size > 0)
 	{
-	_putchar('\n');
+	for (i = 0; i < size; i++)
+	{
+	for (j = 0; j < size; j++)
+	{
+	if (j < size - (i + 1)) 
+	{
+		_putchar(' ');
 	}
 	else
 	{
-	for (x = 0; x < size; x++)
-	{
-	for (y = size - x; y > 1; y--)
-	{
-	_putchar(32);
+		_putchar('#');
 	}
-	for (x = 0; z <= x; z++)
-	{
-	_putchar(35);
 	}
 	_putchar('\n');
 	}
+	}
+	else
+	{
+		_putchar('\n');
 	}
 }
