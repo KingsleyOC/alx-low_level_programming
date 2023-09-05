@@ -175,4 +175,41 @@ void print_osabi(unsigned char *e_ident)
 		case ELFOSABI_FREEBSD:
 			printf("UNIX - FreeBSD\n");
 			break;
+		case ELFOSABI_TRU64:
+			printf("UNIX - TRU 64\n");
+			break;
+		case ELFOSABI_ARM:
+			printf("ARM\n");
+			break;
+		case ELFOSABI_STANDALONE:
+			printf("Standalone App\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
+	}
+}
+
+/**
+ * print_abi - Prints the ABI version of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF ABI version.
+ */
+void print_abi(unsigned char *e_ident)
+{
+	printf(" ABI Version: %d\n",
+			e_ident[EI_ABIVERSION]);
+}
+
+/**
+ * print_type - Prints the type of an ELF header.
+ * @e_type: The ELF type.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
+void print_type(unsigned int e_type, unsigned char *e_ident)
+{
+	if (e_ident[EI_DATA] == ELFDATA2MSB)
+		e_type >>=s;
+	printf(" Type: ");
+
+	switch (e_type)
+	{
 
