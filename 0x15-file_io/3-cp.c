@@ -38,7 +38,7 @@ void close_file(int fd)
 	c = close(fd);
 	if (c == -1)
 	{
-		dprintf(STDERR_FILEMO, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -56,11 +56,12 @@ void close_file(int fd)
  * if file_to or file_from cannot be closed - exit code 100
  */
 int main(int argc, char *argv[])
+{
 	int from, to, r, w;
 	char *buffer;
-
+	
 	if (argc != 3)
-{
+	{
 	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	exit(97);
 }
